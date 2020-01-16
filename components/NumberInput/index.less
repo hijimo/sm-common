@@ -1,0 +1,25 @@
+@import '~antd/es/style/themes/default.less';
+@import '~antd/es/style/mixins/index.less';
+
+:global {
+  :local(.numberInput) {
+    &.zent-input-wrapper.zent-input--has-focus:not(.zent-input-wrapper__not-editable) {
+      border-color: @input-hover-border-color;
+      box-shadow: @input-outline-offset @outline-blur-size @outline-width fade(@outline-color, 20%);
+    }
+  }
+}
+
+.numberInput {
+  :global {
+    .zent-number-input-count:hover {
+      color: @input-number-handler-hover-bg;
+    }
+
+    .zent-input {
+      min-width: 60px !important;
+      padding: 0 5px !important;
+      text-align: center;
+    }
+  }
+}

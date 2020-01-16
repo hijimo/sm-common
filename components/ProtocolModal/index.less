@@ -1,0 +1,67 @@
+.modal {
+  :global {
+    .ant-modal-content {
+      padding-bottom: 30px;
+    }
+    .ant-modal-body {
+      overflow-y: auto;
+      // 减去header的部分
+      max-height: calc(70vh - 55px);
+    }
+    .anticon-close {
+      padding: 5px;
+      color: #fff;
+      font-size: 12px;
+      background-color: #646464;
+      border-radius: 50%;
+      transform: scale(0.8);
+    }
+  }
+}
+
+.ptl {
+  padding: 6px 16px;
+  color: #000;
+
+  p {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    // text-indent: 1em;
+  }
+
+  .li p {
+    // margin-bottom: 2em;
+  }
+  .ptlTitle {
+    margin-bottom: 20px;
+  }
+  .subTitle {
+    display: inline-block;
+    // margin-bottom: 2em;
+  }
+  .ul,
+  .li {
+    margin: 0;
+    padding: 0;
+  }
+  .li {
+    position: relative;
+  }
+  .ul {
+    counter-reset: ordered;
+  }
+  .ul > .li > .ul {
+    margin-bottom: 20px;
+  }
+  .ul > .li::before {
+    float: left;
+    line-height: 20px;
+    content: '*\00A0\00A0\00A0\00A0';
+    // margin-right: 1em;
+    counter-increment: ordered;
+  }
+  & > .ul > .li::before {
+    content: '*\00A0\00A0'counters(ordered, '.') '、';
+  }
+}

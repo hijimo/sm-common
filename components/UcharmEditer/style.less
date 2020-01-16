@@ -1,0 +1,19 @@
+.ucharmEditor {
+  position: relative;
+  .wordCount {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 1;
+    color: #585858;
+    font-size: 12px;
+    &.overflow {
+      color: #ff5050;
+    }
+  }
+  :global {
+    .ck-editor__editable_inline {
+      min-height: 200px;
+    }
+  }
+}

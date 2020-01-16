@@ -1,0 +1,25 @@
+@import '~antd/lib/style/themes/default.less';
+
+.generalTable {
+  :global {
+    table {
+      .ant-table-tbody > tr.ant-table-row-selected td {
+        background-color: #ddd;
+      }
+      & > tbody > tr:nth-of-type(even) {
+        background-color: #fafafa;
+      }
+      // th,
+      // td {
+      //   white-space: nowrap;
+      // }
+      th {
+        white-space: nowrap;
+      }
+    }
+
+    .ant-typography {
+      margin-bottom: 0;
+    }
+  }
+}

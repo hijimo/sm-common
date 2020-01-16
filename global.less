@@ -1,0 +1,102 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+#root {
+  .ant-pro-sider-menu-logo {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .ant-page-header.has-footer {
+    padding-bottom: 0;
+  }
+
+  .ant-page-header-heading-title {
+    font-size: 20px;
+  }
+
+  // 富文本编辑器
+  .custom-block-indent-a {
+    margin-left: 1em;
+  }
+  .custom-block-indent-b {
+    margin-left: 2em;
+  }
+  .custom-block-indent-c {
+    margin-left: 3em;
+  }
+
+  // 表格
+  .ant-table-thead > tr > th {
+    font-weight: 700;
+  }
+}
+
+.tableListForm {
+  :global {
+    .ant-form-item {
+      display: flex;
+      margin-right: 0;
+      margin-bottom: 24px;
+
+      > .ant-form-item-label {
+        width: 140px;
+        padding-right: 8px;
+        line-height: 32px;
+        text-overflow: ellipsis;
+      }
+
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+
+    .ant-form-item-control-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
