@@ -13,6 +13,9 @@ export function set(key, value) {
 
   return localStorage.setItem(key, v);
 }
+export function clear () {
+  localStorage.clear()
+}
 
 // 文件上传凭证
 

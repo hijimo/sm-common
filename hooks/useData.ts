@@ -51,7 +51,7 @@ const useData = (dataLoader: any, initialData: any) => {
         const result = await dataLoader();
 
         if (!didCancel) {
-          if (result.success) {
+          if (result.data) {
             dispatch({ type: 'FETCH_SUCCESS', payload: result });
           } else {
             dispatch({ type: 'FETCH_FAILURE' });

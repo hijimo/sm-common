@@ -45,18 +45,20 @@ const errorHandler = error => {
   const { response } = error;
 
   if (response && response.status) {
-    const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
+    if (status === 401 ) {
+      window.location = '/user/login'
+    } else if (status === 403) {
+      window.location = '/403'
+    }
+    const errorText = codeMessage[response.status] || response.statusText;
+    
     notification.error({
       message: `${formatMessage({ id: 'common.request.label.requetError' })} ${status}: ${url}`,
       description: errorText,
     });
-  } else if (!response) {
-    notification.error({
-      description: formatMessage({ id: 'common.request.label.netWorkErrorDesc' }),
-      message: formatMessage({ id: 'common.request.label.netWorkError' }),
-    });
-  }
+  } 
+  
 
   return response;
 };
@@ -91,24 +93,17 @@ const showError = (title, okText) => {
   }
 };
 request.interceptors.response.use(async response => {
-  const data = await response.clone().json();
+  // const data = await response.clone().json();
 
-  const { retCode, retMsg, success } = data || {};
+  // const { code, message, success } = data || {};
 
-  if (data && !success && !_includes(notNotifiRetCodeList, retCode)) {
-    // notification.error({
-    //   message: `network error`,
-    //   description: data.retMsg,
-    // });
-    message.error(retMsg);
-  }
-
-  if (retCode === '3038') {
-    showError(
-      formatMessage({ id: 'common.global.error.accountFreeze' }),
-      formatMessage({ id: 'common.global.confirm.confirm' }),
-    );
-  }
+  // if (data && !success && !_includes(notNotifiRetCodeList, retCode)) {
+  //   // notification.error({
+  //   //   message: `network error`,
+  //   //   description: data.retMsg,
+  //   // });
+  //   message.error(message);
+  // }
   return response;
 });
 export default request;

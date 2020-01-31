@@ -1,8 +1,9 @@
-import { useMemo, useRef, useCallback } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import _get from 'lodash/get';
 import _memoize from 'lodash/memoize';
-import useData from './useData';
-import { getUserRoleMenu } from '../services/common';
+// import useData from './useData';
+// import { getUserRoleMenu } from '../services/common';
+import MenuData from './menu'
 
 const mapMenuToStandard = _memoize(
   (data: Array<any>, pathMap: Array<any>): Array<any> =>
@@ -44,9 +45,10 @@ const generatePathMap = _memoize((data: Array<any>): any =>
 
 const useMenu = () => {
   // resourceType传入0为只获取菜单
-  const dataLoader = useCallback(() => getUserRoleMenu({ resourceType: 0 }), []);
+  // const dataLoader = useCallback(() => getUserRoleMenu({ resourceType: 0 }), []);
 
-  const { data, isLoading, isError } = useData(dataLoader, []);
+  // const { data, isLoading, isError } = useData(dataLoader, []);
+  const [data] = useState([...MenuData])
 
   const flattenMenuData = useMemo(() => mapMenuToFlatten(data), [data]);
 
@@ -68,8 +70,8 @@ const useMenu = () => {
 
   return {
     data,
-    isLoading,
-    isError,
+    isLoading:false,
+    isError: false,
     flattenMenuData,
     menuDataRender,
   };

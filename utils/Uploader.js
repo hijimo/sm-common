@@ -53,12 +53,12 @@ class Uploader {
       }
     }
 
-    const { success, data, retMsg } = await getOssSign();
+    const res = await getOssSign();
 
-    if (success) {
-      data.creator = parseInt(new Date().valueOf() / 1000);
-      setUploadSign(data);
-      return data;
+    if (res) {
+      res.creator = parseInt(new Date().valueOf() / 1000);
+      setUploadSign(res);
+      return res;
     }
     // 如果获取证书失败，直接返回文件上传失败
     onError(retMsg || '');
@@ -125,7 +125,6 @@ class Uploader {
   sendRequest() {
     const { name = 'file', data, file } = this.opts;
     const fd = new FormData();
-
     const { accessKeyId: OSSAccessKeyId, dir, policy, signature, host } = this.sign;
     const key = genKey(dir, file.name);
     const oss = {

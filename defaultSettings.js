@@ -10,7 +10,7 @@ module.exports = {
   menu: {
     locale: true,
   },
-  title: 'Enjoy Yeeorder, Enjoy Your Business',
+  title: 'Beer',
   pwa: false,
   iconfontUrl: '',
 };
